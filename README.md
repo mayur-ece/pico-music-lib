@@ -29,6 +29,23 @@ Play simple tunes using a buzzer with MicroPython.
 - Buzzer (+) → GPIO pin (example: GP15)
 - Buzzer (-) → GND
 
+###  (important explanation 👇)
+
+```markdown
+## 🎵 Song Format
+
+Each note is written like:
+
+time note duration channel;
+
+Example:
+0 G4 2 0;
+
+- time → when note starts
+- note → pitch (G4, A4, C5, etc.)
+- duration → how long it plays
+- channel → which buzzer (0–3)
+
 ---
 
 ## ▶️ Example Code
