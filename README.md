@@ -35,9 +35,21 @@ Play simple tunes using a buzzer with MicroPython.
 
 ```python
 from machine import Pin
-from buzzer_music import play_tone
+from buzzer_music import music
+import time
 
-BUZZER_PIN = 15
+# 4 buzzers
+pins = [Pin(15), Pin(16), Pin(17), Pin(18)]
 
-# Play A note (440Hz for 0.5 sec)
-play_tone(BUZZER_PIN, 440, 500)
+song = (
+"0 G4 2 0;2 G4 1 0;3 A4 4 0;7 G4 4 0;11 C5 4 0;15 B4 8 0;"
+"24 G4 2 0;24 B4 2 0;26 G4 1 0;27 A4 4 0;31 G4 4 0;35 D5 4 0;39 C5 8 0;"
+"48 G4 2 0;48 E5 2 0;50 G4 1 0;51 G5 4 0;55 E5 4 0;59 C5 4 0;63 B4 4 0;67 A4 8 0;"
+"76 F5 2 0;76 A4 2 0;78 F5 1 0;79 E5 4 0;83 C5 4 0;87 D5 4 0;91 C5 8 0;"
+)
+
+m = music(songString=song, pins=pins, tempo=3)
+
+while True:
+    m.tick()
+    time.sleep(0.04)
